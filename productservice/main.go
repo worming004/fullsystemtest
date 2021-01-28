@@ -4,7 +4,7 @@ import (
 	"log"
 	"net/http"
 
-	openapi "github.com/worming004/fullsystemtest/api-generated/go"
+	openapi "github.com/worming004/fullsystemtest/productservice/api-generated/go"
 )
 
 func main() {
