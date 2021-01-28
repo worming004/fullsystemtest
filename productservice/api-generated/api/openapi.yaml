@@ -1,0 +1,103 @@
+openapi: 3.0.2
+info:
+  title: API Title
+  version: "1.0"
+servers:
+- url: https://api.server.test/v1
+paths:
+  /products:
+    get:
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/inline_response_200'
+          description: get all products
+    post:
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Product'
+        description: post a new product
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Id'
+          description: product to submit
+  /products/{id}:
+    delete:
+      parameters:
+      - description: ProductId
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "204":
+          description: deleted
+    get:
+      parameters:
+      - description: ProductId
+        explode: false
+        in: path
+        name: id
+        required: true
+        schema:
+          type: integer
+        style: simple
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+          description: get unique product
+components:
+  schemas:
+    Product:
+      example:
+        price: 6
+        name: name
+        id: 0
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        price:
+          type: integer
+      required:
+      - name
+      - price
+      type: object
+    Id:
+      example:
+        id: 0
+      properties:
+        id:
+          type: integer
+      required:
+      - id
+      type: object
+    inline_response_200:
+      example:
+        products:
+        - price: 6
+          name: name
+          id: 0
+        - price: 6
+          name: name
+          id: 0
+      properties:
+        products:
+          items:
+            $ref: '#/components/schemas/Product'
+          type: array
+      type: object

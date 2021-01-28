@@ -72,7 +72,6 @@ components:
         price:
           type: integer
       required:
-        - id
         - name
         - price
     Id:
