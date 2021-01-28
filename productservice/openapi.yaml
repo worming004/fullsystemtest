@@ -1,0 +1,52 @@
+openapi: '3.0.2'
+info:
+  title: API Title
+  version: '1.0'
+servers:
+  - url: https://api.server.test/v1
+paths:
+  /products:
+    get:
+      responses:
+        '200':
+          description: get all products
+          content:
+             application/json:
+              schema:
+                type: object
+                properties:
+                  products:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Product"
+  /products/{id}:
+    get:
+      parameters:
+        - name: id
+          in: path
+          description: ProductId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '200':
+          description: get unique product
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Product'
+components:
+  schemas:
+    Product:
+      type: object
+      properties:
+        id:
+          type: integer
+        name:
+          type: string
+        price:
+          type: integer
+      required:
+        - id
+        - name
+        - price 
