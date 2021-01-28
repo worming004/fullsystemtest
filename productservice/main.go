@@ -10,7 +10,7 @@ import (
 func main() {
 	log.Printf("Server started")
 
-	DefaultApiService := openapi.NewDefaultApiService()
+	DefaultApiService := newProductService()
 	DefaultApiController := openapi.NewDefaultApiController(DefaultApiService)
 
 	router := openapi.NewRouter(DefaultApiController)
