@@ -19,6 +19,20 @@ paths:
                     type: array
                     items:
                       $ref: "#/components/schemas/Product"
+    post:
+      requestBody:
+        description: post a new product
+        content:
+          'application/json':
+            schema:
+              $ref: '#/components/schemas/Product'
+      responses:
+        '201':
+          description: product to submit
+          content:
+            application/json:
+              schema:
+               $ref: '#/components/schemas/Id'
   /products/{id}:
     get:
       parameters:
@@ -35,6 +49,17 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/Product'
+    delete:
+      parameters:
+        - name: id
+          in: path
+          description: ProductId
+          required: true
+          schema:
+            type: integer
+      responses:
+        '204':
+          description: deleted
 components:
   schemas:
     Product:
@@ -49,4 +74,11 @@ components:
       required:
         - id
         - name
-        - price 
+        - price
+    Id:
+      type: object
+      properties:
+        id: 
+          type: integer
+      required:
+        - id
