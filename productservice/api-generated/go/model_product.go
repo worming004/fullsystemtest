@@ -11,7 +11,7 @@ package openapi
 
 type Product struct {
 
-	Id int32 `json:"id,omitempty"`
+	Id string `json:"id,omitempty"`
 
 	Name string `json:"name"`
 

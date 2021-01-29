@@ -63,12 +63,13 @@ components:
   schemas:
     Product:
       example:
-        price: 6
+        price: 0
         name: name
-        id: 0
+        id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         id:
-          type: integer
+          format: uuid
+          type: string
         name:
           type: string
         price:
@@ -89,12 +90,12 @@ components:
     inline_response_200:
       example:
         products:
-        - price: 6
+        - price: 0
           name: name
-          id: 0
-        - price: 6
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
+        - price: 0
           name: name
-          id: 0
+          id: 046b6c7f-0b8a-43b9-b35d-6489e6daee91
       properties:
         products:
           items:

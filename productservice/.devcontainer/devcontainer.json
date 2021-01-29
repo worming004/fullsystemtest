@@ -2,17 +2,9 @@
 // https://github.com/microsoft/vscode-dev-containers/tree/v0.155.1/containers/go
 {
 	"name": "Go",
-	"build": {
-		"dockerfile": "Dockerfile",
-		"args": {
-			// Update the VARIANT arg to pick a version of Go: 1, 1.15, 1.14
-			"VARIANT": "1.15",
-			// Options
-			"INSTALL_NODE": "true",
-			"NODE_VERSION": "lts/*"
-		}
-	},
-	"runArgs": [ "--cap-add=SYS_PTRACE", "--security-opt", "seccomp=unconfined" ],
+	"dockerComposeFile": "docker-compose.yml",
+	"service": "app",
+	"workspaceFolder": "/go/src/github.com/worming004/fullsystemtest/productservice",
 
 	// Set *default* container specific settings.json values on container create.
 	"settings": {
@@ -26,11 +18,10 @@
 
 	// Add the IDs of extensions you want installed when the container is created.
 	"extensions": [
-		"golang.Go"
+		"golang.Go",
+		"mongodb.mongodb-vscode"
 	],
 
-	"workspaceMount": "source=${localWorkspaceFolder},target=/go/src/github.com/worming004/fullsystemtest/productservice,type=bind,consistency=delegated",
-	"workspaceFolder": "/go/src/github.com/worming004/fullsystemtest/productservice",
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
 	// "forwardPorts": [],
 
